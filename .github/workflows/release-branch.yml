@@ -1,6 +1,9 @@
 on:
-  pull_request:
-    types: [assigned, unassigned]
+  workflow_dispatch:
+    inputs:
+      number:
+        description: 'AREL Number'
+        required: true
 jobs:
   test:
     strategy:
