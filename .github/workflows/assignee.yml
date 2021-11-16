@@ -1,0 +1,19 @@
+on:
+  issues:
+    types: [assigned, unassigned]
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        version: 12
+    - uses: actions/github-script@v5
+      with:
+        script: |
+          console.log(github.event)
+          
