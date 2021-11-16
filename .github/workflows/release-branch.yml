@@ -17,10 +17,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         version: 12
-    - run: |
-        echo ${{ secrets.CUSTOM_GITHUB_TOKEN }} | gh auth login --with-token
-        gh codespace create --branch "release/arel-1"
     - uses: actions/github-script@v5
       with:
         script: |
-          console.log(context)
+          console.log(context.payload)
+    - run: |
+        git config --global user.name 'farch' 
+        git config --global user.email 'whoami@unknown.com'
+        git checkout master
+        git branch "release/arel-${{ context.payload.inputs.number }}"
+        git checkout "release/arel-${{ context.payload.inputs.number }}"
+        git push origin "release/arel-${{ context.payload.inputs.number }}"
