@@ -17,7 +17,9 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         version: 12
-    - run: gh codespace create --branch "release/arel-1"
+    - run: |
+        gh auth login --with-token ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        gh codespace create --branch "release/arel-1"
     - uses: actions/github-script@v5
       with:
         script: |
