@@ -1,5 +1,5 @@
 on:
-  issues:
+  pull_request:
     types: [assigned, unassigned]
 jobs:
   test:
