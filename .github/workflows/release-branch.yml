@@ -13,18 +13,22 @@ jobs:
         platform: [ubuntu-latest]
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v1
+    
+    - uses: actions/checkout@v2
+    
     - uses: actions/setup-node@v1
       with:
         version: 12
+        
     - uses: actions/github-script@v5
       with:
         script: |
           console.log(context.payload)
+          
     - run: |
         git config --global user.name 'farch' 
         git config --global user.email 'whoami@unknown.com'
         git checkout master
-        git branch "release/arel-${{ context.payload.inputs.number }}"
-        git checkout "release/arel-${{ context.payload.inputs.number }}"
-        git push origin "release/arel-${{ context.payload.inputs.number }}"
+#        git branch "release/arel-${{ context.payload.inputs.number }}"
+#        git checkout "release/arel-${{ context.payload.inputs.number }}"
+#        git push origin "release/arel-${{ context.payload.inputs.number }}"
