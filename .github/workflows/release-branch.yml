@@ -28,7 +28,7 @@ jobs:
     - run: |
         git config --global user.name 'farch' 
         git config --global user.email 'whoami@unknown.com'
-        git checkout master
-#        git branch "release/arel-${{ context.payload.inputs.number }}"
-#        git checkout "release/arel-${{ context.payload.inputs.number }}"
-#        git push origin "release/arel-${{ context.payload.inputs.number }}"
+
+        git branch "release/arel-${{ github.event.inputs.number }}"
+        git checkout "release/arel-${{ github.event.inputs.number }}"
+        git push origin "release/arel-${{ github.event.inputs.number }}"
