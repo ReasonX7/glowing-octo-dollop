@@ -15,6 +15,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         version: 12
+    - run: gh codespace create --branch "release/arel-1"
     - uses: actions/github-script@v5
       with:
         script: |
